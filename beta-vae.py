@@ -20,6 +20,8 @@ h_dim = 128
 c = 0
 lr = 1e-3
 
+beta = 0.7
+
 # Prereqs for encoder network
 def xavier_init(size):
     in_dim = size[0]
@@ -80,7 +82,7 @@ for it in range(100000):
     # Loss
     recon_loss = nn.binary_cross_entropy(X_sample, X, size_average=False)
     kl_loss = 0.5 * torch.sum(torch.exp(z_var) + z_mu ** 2 - 1. - z_var)
-    loss = recon_loss + kl_loss
+    loss = recon_loss + beta * kl_loss
 
 
     if it % 1000 == 0:

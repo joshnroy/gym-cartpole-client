@@ -9,7 +9,8 @@ import os
 from torch.autograd import Variable
 from tensorflow.examples.tutorials.mnist import input_data
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = "cpu"
 
 mnist = input_data.read_data_sets('../MNIST_data', one_hot=True)
 mb_size = 64
